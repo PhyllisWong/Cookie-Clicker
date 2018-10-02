@@ -50,7 +50,7 @@ buyClickPower.addEventListener('click', function () {
     clickPowerLevelNumber += 1;
     clickPowerPriceAmount = Math.floor(clickPowerPriceAmount * 1.33);
 
-    clickPower += 1;
+    clickPower += 1 * Math.floor(clickPowerLevelNumber * 1.05);
     refreshPowerClick();
 
     // Let the user know they bought the power up!
@@ -96,7 +96,7 @@ buyGrandma.addEventListener('click', () => {
   // update price
   grandmaPriceAmount = Math.floor(grandmaPriceAmount * 1.33);
   // update grandma power
-  grandmaPower += 10;
+  grandmaPower += 10 + Math.floor(grandmaLevelNumber * 1.33);
   // turn autoGrandma on!
   autoGranma = true
   autoGrandmaStart();
@@ -123,4 +123,68 @@ const autoGrandmaStart = () => {
     cookieCount += grandmaPower;
     refreshCookieCount();
   }, numOfMilliseconds);
+};
+
+/********************************
+
+ Facilities
+
+ ********************************/
+
+// Defaults
+let facilityAuto = false;
+let facilityPower = 1000;
+let facilityPriceAmount = 100000;
+let facilityLevelNumber = 0;
+
+// DOM declarations
+const buyFacility = document.getElementById('buy-facility');
+const facilityPrice = document.getElementById('facility-price');
+const facilityLevel = document.getElementById('facility-level');
+const facilityMultiple = document.getElementById('facility-multiple');
+
+// Buy a facility
+buyFacility.addEventListener('click', function() {
+  // set autoLoop to false;
+  facilityAuto = false;
+
+  // make sure we have enough cookies
+  if(cookieCount >= facilityPriceAmount) {
+    cookieCount -= facilityPriceAmount;
+    refreshCookieCount();
+
+    // upgrade power level
+    facilityLevelNumber += 1;
+
+    // update price
+    facilityPower += 500 + Math.floor(facilityLevelNumber * 1.33);
+
+    // update facility power
+    facilityPower += 500;
+
+    // turn autoFacility on!
+    facilityAuto = true;
+    autoFacilityStart();
+
+    // refresh shop item
+    refreshFacility();
+  } else {
+    alert("You don't have enough cookies");
+  }
+});
+
+// game loop
+const autoFacilityStart = () => {
+  const numOfMilliSecs = 1000;
+  let facilityInt = window.setInterval(()=>{
+    cookieCount += facilityPower;
+    refreshCookieCount();
+  }, numOfMilliSecs)
+};
+
+// refresh shop
+const refreshFacility = () => {
+  facilityLevel.innerHTML = facilityLevelNumber;
+  facilityPrice.innerHTML = facilityPriceAmount;
+  facilityMultiple.innerHTML = facilityPower - 500;
 };
