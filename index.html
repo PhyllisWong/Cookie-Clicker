@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Make Cookies</title>
+</head>
+
+<body>
+  <p>Hello Cookies!</p>
+  <h1 id="cookie-counter">A</h1>  <!--------- Cookie Counter -------->
+  <button id="cookie-clicker">Make Cookies</button>
+
+  <hr>
+  <h2>Shop</h2>
+  <hr>
+
+  <p>Click Power</p>
+  <p>Produces <span id="click-power-multiple">1</span> cookies(s) per click</p>
+  <button id="buy-click-power">Buy for <span id="click-power-price">50</span></button>
+  <p>level: <span id="click-power-level">1</span></p>
+
+  <script>
+    // declare default variables
+    let cookieCount = 0;
+    let clickPower = 1;
+    let clickPowerPriceAmount = 50;
+    let clickPowerLevelNumber = 1;
+
+    // declare DOM variables
+    let cookieCounter = document.getElementById('cookie-counter');
+    let cookieClicker = document.getElementById('cookie-clicker');
+    let buyClickPower = document.getElementById('buy-click-power');
+    let clickPowerPrice = document.getElementById('click-power-price');
+    let clickPowerLevel = document.getElementById('click-power-level');
+    let clickPowerMultiple = document.getElementById('click-power-multiple');
+
+    cookieCounter.innerHTML = cookieCount;
+
+
+    <!-- Make the button respond to JS -->
+    cookieClicker.addEventListener('click', function () {
+      cookieCount += clickPower;
+      cookieCounter.innerHTML = cookieCount;
+    });
+
+    buyClickPower.addEventListener('click', function () {
+      if (cookieCount >= clickPowerPriceAmount) {
+        cookieCount -= clickPowerPriceAmount;
+        cookieCounter.innerHTML = cookieCount;
+        setTimeout(() => { alert('Item successfully bought!'); }, 350);
+
+      } else {
+        alert("You don't have enough cookies!")
+      }
+
+    })
+
+  </script>
+</body>
+</html>
