@@ -1,0 +1,27 @@
+
+body {
+	background-color: lightblue;
+}
+
+.cookie-btn {
+	display: flex;
+	flex-direction: row;
+	border: 0px solid red;
+	background: none;
+	width: 100px;
+	height: 100px;
+	margin: 0;
+	padding: 0;
+}
+
+.cookie-btn, .btn:focus {
+	outline: 0;
+	box-shadow: none!important;
+}
+
+.background-color {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
