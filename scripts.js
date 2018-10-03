@@ -58,7 +58,7 @@ buyClickPower.addEventListener('click', function () {
       alert('Power up bought!');
       }, 350);
   } else {
-    alert("You don't have enough cookies!")
+    notEnoughCookies();
   }
 });
 
@@ -77,7 +77,7 @@ const refreshPowerClick = () => {
 let grandmaPower = 20;
 let grandmaPriceAmount = 500;
 let grandmaLevelNumber = 0;
-let autoGranma = false;
+let autoGrandma = false;
 
 // DOM declarations
 const buyGrandma = document.getElementById('buy-grandma');
@@ -90,19 +90,22 @@ buyGrandma.addEventListener('click', () => {
   if(cookieCount >= grandmaPriceAmount) {
     cookieCount -= grandmaPriceAmount;
     refreshCookieCount()
-  }
-  // upgrade power level
-  grandmaLevelNumber += 1;
-  // update price
-  grandmaPriceAmount = Math.floor(grandmaPriceAmount * 1.33);
-  // update grandma power
-  grandmaPower += 10 + Math.floor(grandmaLevelNumber * 1.33);
-  // turn autoGrandma on!
-  autoGranma = true
-  autoGrandmaStart();
+    // upgrade power level
+    grandmaLevelNumber += 1;
+    // update price
+    grandmaPriceAmount = Math.floor(grandmaPriceAmount * 1.33);
+    // update grandma power
+    grandmaPower += 10 + Math.floor(grandmaLevelNumber * 1.33);
+    // turn autoGrandma on!
+    autoGrandma = true
+    autoGrandmaStart();
 
-  // refresh shop item
-  refreshGrandma();
+    // refresh shop item
+    refreshGrandma();
+  } else {
+    notEnoughCookies();
+  }
+
 });
 
 const refreshGrandma = () => {
@@ -132,10 +135,10 @@ const autoGrandmaStart = () => {
  ********************************/
 
 // Defaults
-let facilityAuto = false;
 let facilityPower = 1000;
-let facilityPriceAmount = 100000;
+let facilityPriceAmount = 10000;
 let facilityLevelNumber = 0;
+let facilityAuto = false;
 
 // DOM declarations
 const buyFacility = document.getElementById('buy-facility');
@@ -157,7 +160,7 @@ buyFacility.addEventListener('click', function() {
     facilityLevelNumber += 1;
 
     // update price
-    facilityPower += 500 + Math.floor(facilityLevelNumber * 1.33);
+    facilityPower += 500 + Math.floor(facilityLevelNumber * 1.05);
 
     // update facility power
     facilityPower += 500;
@@ -169,7 +172,7 @@ buyFacility.addEventListener('click', function() {
     // refresh shop item
     refreshFacility();
   } else {
-    alert("You don't have enough cookies");
+    notEnoughCookies();
   }
 });
 
@@ -187,4 +190,9 @@ const refreshFacility = () => {
   facilityLevel.innerHTML = facilityLevelNumber;
   facilityPrice.innerHTML = facilityPriceAmount;
   facilityMultiple.innerHTML = facilityPower - 500;
+};
+
+// Alert user they don't have enough cookies
+const notEnoughCookies = () => {
+  alert("You don't have enough cookies");
 };
