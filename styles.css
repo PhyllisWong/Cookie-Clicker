@@ -29,6 +29,8 @@ body {
 .shop {
 	display: flex;
 	flex-direction: row;
+	background-color: burlywood;
+	border-radius: 2rem;
 }
 
 .item-card {
