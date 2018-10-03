@@ -135,64 +135,64 @@ const autoGrandmaStart = () => {
  ********************************/
 
 // Defaults
-let facilityPower = 1000;
-let facilityPriceAmount = 10000;
-let facilityLevelNumber = 0;
-let facilityAuto = false;
+let factoryPower = 1000;
+let factoryPriceAmount = 10000;
+let factoryLevelNumber = 0;
+let factoryAuto = false;
 
 // DOM declarations
-const buyFacility = document.getElementById('buy-facility');
-const facilityPrice = document.getElementById('facility-price');
-const facilityLevel = document.getElementById('facility-level');
-const facilityMultiple = document.getElementById('facility-multiple');
+const buyFactory = document.getElementById('buy-factory');
+const factoryPrice = document.getElementById('factory-price');
+const factoryLevel = document.getElementById('factory-level');
+const factoryMultiple = document.getElementById('factory-multiple');
 
 // Buy a facility
-buyFacility.addEventListener('click', function() {
+buyFactory.addEventListener('click', function() {
   // set autoLoop to false;
-  facilityAuto = false;
+  factoryAuto = false;
 
   // make sure we have enough cookies
-  if(cookieCount >= facilityPriceAmount) {
-    cookieCount -= facilityPriceAmount;
+  if(cookieCount >= factoryPriceAmount) {
+    cookieCount -= factoryPriceAmount;
     refreshCookieCount();
 
     // upgrade power level
-    facilityLevelNumber += 1;
+    factoryLevelNumber += 1;
 
     // update price
-    facilityPower += 500 + Math.floor(facilityLevelNumber * 1.05);
+    factoryPower += 500 + Math.floor(factoryLevelNumber * 1.05);
 
     // update facility power
-    facilityPower += 500;
+    factoryPower += 500;
 
     // turn autoFacility on!
-    facilityAuto = true;
-    autoFacilityStart();
+    factoryAuto = true;
+    autoFactoryStart();
 
     // refresh shop item
-    refreshFacility();
+    refreshFactory();
   } else {
     notEnoughCookies();
   }
 });
 
 // game loop
-const autoFacilityStart = () => {
+const autoFactoryStart = () => {
   const numOfMilliSecs = 1000;
-  let facilityInt = window.setInterval(()=>{
-    cookieCount += facilityPower;
+  let factoryInt = window.setInterval(()=>{
+    cookieCount += factoryPower;
     refreshCookieCount();
   }, numOfMilliSecs)
 };
 
 // refresh shop
-const refreshFacility = () => {
-  facilityLevel.innerHTML = facilityLevelNumber;
-  facilityPrice.innerHTML = facilityPriceAmount;
-  facilityMultiple.innerHTML = facilityPower - 500;
+const refreshFactory = () => {
+  factoryLevel.innerHTML = factoryLevelNumber;
+  factoryPrice.innerHTML = factoryPriceAmount;
+  factoryMultiple.innerHTML = factoryPower - 500;
 };
 
 // Alert user they don't have enough cookies
-const notEnoughCookies = () => {
+const notEnoughCookies = function() {
   alert("You don't have enough cookies");
 };

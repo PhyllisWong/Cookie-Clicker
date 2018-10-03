@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Fahkwang');
+
 :root {
 	--button-green: #4CAF50;
 	--button-blue: #55bdde;
@@ -23,6 +26,7 @@ body {
 	align-items: center;
 	margin: 0;
 	padding: 0;
+	font-family: Fahkwang;
 }
 
 .title h1 {
@@ -33,6 +37,7 @@ body {
 	margin-top: .5em;
 	font-size: 18px;
 	padding-bottom: 2rem;
+	font-family: Fahkwang;
 }
 
 .cookie-counter {
@@ -44,7 +49,8 @@ body {
 	padding: 1rem;
 	margin-bottom: 2rem;
 	border: 1px solid black;
-	border-radius: 1rem;
+	border-radius: 1rem;font-family: Fahkwang;
+
 	/*color: var(--dark-brown);*/
 }
 
@@ -84,13 +90,14 @@ body {
 	padding-right: 1rem;
 	padding-left: 1rem;
 	margin-top: 2rem;
+	margin-bottom: 2rem;
+	font-family: Fahkwang;
 }
 
 .shop {
 	display: flex;
 	flex-direction: row;
-
-
+	font-family: "Times New Roman";
 }
 
 /* Click Power Button */
@@ -99,7 +106,7 @@ body {
 	color: white;
 	border: 0 solid white;
 	border-radius: 4px;
-	width: 110px;
+	width: 120px;
 	height: 44px;
 	font-size: 16px;
 }
@@ -120,7 +127,7 @@ body {
 	color: white;
 	border: 0 solid white;
 	border-radius: 4px;
-	width: 110px;
+	width: 120px;
 	height: 44px;
 	font-size: 16px;
 }
@@ -140,7 +147,7 @@ body {
 	color: white;
 	border: 0 solid white;
 	border-radius: 4px;
-	width: 110px;
+	width: 120px;
 	height: 44px;
 	font-size: 16px;
 }
